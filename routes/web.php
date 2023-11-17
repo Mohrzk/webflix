@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,28 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'name' => 'Fiorella',
-        'games' => [
-            'Elden Ring',
-            'Call of Duty',
-            'FC24',
-        ],
-    ]);
-});
+Route::get('/', [HomeController::class, 'index']);
 
 // {friend} = Paramètre obligatoire
 // {friend?} = Paramètre optionnel
 
-Route::get('/fiorella/{friend?}', function (Request $request, $friend = null){
-    dump($_GET ); // Interdit avec Laravel 
-    dump($request->color); // $_GET['color] ?? null;
+Route::get('/fiorella/{friend?}',[HomeController::class, 'friend']); 
 
-    return view('presentation', [
-        'age' => Carbon::parse('2019-12-31')->age,
-        'friend' => ucfirst($friend),
-        'color' => $request->color,
+// AboutController -> index
+Route::get('/a-propos', [AboutController::class, 'index']);
 
-    ]);
-});
+Route::get('/a-propos/{user}', [AboutController::class, 'show']); 

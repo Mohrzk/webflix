@@ -13,6 +13,7 @@
         <a href="/fiorella?color=blue">Fiorella Bleue</a>
         <a href="/fiorella/emma">Fiorella et Emma</a>
         <a href="/fiorella/paul">Fiorella et paul</a>
+        <a href="/fiorella-apropos">À propos</a>
     </nav>
 
 
